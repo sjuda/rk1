@@ -1,0 +1,142 @@
+
+#include "stdafx.h"
+#include <iostream>
+#include <stdio.h>
+#include <math.h>
+
+using namespace std;
+int main()
+{
+	char fig;
+
+	pair<char, int> white;
+
+	cout << "Enter figure name: " << endl;
+
+	cin >> fig;
+
+	cout << "Enter white figure coordinates: " << endl;
+
+	cin >> white.first >> white.second;
+
+	pair<char, int> src;
+
+	cout << "Enter source figure coordinates: " << endl;
+
+	cin >> src.first >> src.second;
+
+	pair<char, int> dest;
+
+	cout << "Enter  destination figure coordinates: " << endl;
+
+	cin >> dest.first >> dest.second;
+
+	string diap = " ABCDEFG";
+
+	int sf = diap.find(src.first);
+
+	int df = diap.find(dest.first);
+
+	if ((sf == df) && (src.second == dest.second))
+		{
+			cout << "Figure stay here!" << endl;
+		}
+
+		else if (((src.first != white.first) && (src.second != white.second)) || ((src.first != dest.first) && (src.second != dest.second)))
+	{
+		if (fig == 'Q')
+		{
+			if ((((sf - df) == (src.second - dest.second)) || ((sf - df) == -(src.second - dest.second))) || (src.first == dest.first) || (sf == df))
+			{
+				cout << "Figure can change position to: (" << dest.first << ";" << dest.second << ")" << endl;
+			}
+			else
+			{
+				cout << "Error " << endl;
+			}
+		}
+
+		else if (fig == 'N')
+		{
+			if ((((sf - df == 2) && (src.second - dest.second == 1)) && ((sf - df == -2) && (src.second - dest.second == 1)) && ((sf - df == 2) && (src.second - dest.second == -1)) && ((sf - df == -2) && (src.second - dest.second == -1)))
+				)
+				{
+				cout << "Figure can change position to: (" << dest.first << ";" << dest.second << ")" << endl;
+				 }
+			else if (((sf - df == 1) && ((src.second - dest.second) == 2)) || ((sf - df == -1) && ((src.second - dest.second) == 2))||((sf - df == 1) && ((src.second - dest.second) == -2)) || ((sf - df == -1) && ((src.second - dest.second) == -2)))
+			{
+			cout << "Figure can change position to: (" << dest.first << ";" << dest.second << ")" << endl;
+}
+			else {
+				cout << "Error " << endl;
+			}
+
+		}
+		else if (fig == 'R')
+		{
+			if ((src.second == dest.second) || (src.first == dest.first))
+			{
+				cout << "Figure can change position to: (" << dest.first << ";" << dest.second << ")" << endl;
+			}
+			else
+			{
+				cout << "Error " << endl;
+			}
+		}
+
+
+
+		else if (fig == 'B')
+		{
+			if ((((sf - df)) == (src.second - dest.second)) || (((sf - df)) == -(src.second - dest.second)))
+			{
+				cout << "Figure can change position to: (" << dest.first << ";" << dest.second << ")" << endl;
+			}
+			else
+			{
+				cout << "Error " << endl;
+			}
+		}
+
+		else if (fig == 'P')
+		{
+			if (src.second == 7)
+			{
+				if (((dest.second + 1 != white.second) && (dest.second + 2 != white.second)) && (dest.first == white.first))
+				{
+					cout << "Figure can change position to: (" << dest.first << ";" << dest.second << ")" << endl;
+				}
+				else
+				{
+					cout << "Error " << endl;
+				}
+			}
+			else if ((dest.second == white.second) && ((sf + 2 != diap.find(white.first)) && (sf + 1 != diap.find(white.first))))
+			{
+				cout << "Figure can change position to: (" << dest.first << ";" << dest.second << ")" << endl;
+			}
+			else if ((src.second - 1 == white.second) && ((sf - 1 == diap.find(white.first)) || (sf + 1 == diap.find(white.first))))
+			{
+				cout << "Figure can change position to: (" << dest.first << ";" << dest.second << ")" << endl;
+			}
+			else
+			{
+				cout << "Error " << endl;
+			}
+		}
+
+		else
+		{
+			cout << "Error" << endl;
+		}
+	}
+	else
+	{
+
+		cout << "Error" << endl;
+	}
+
+	return 0;
+}
+
+
